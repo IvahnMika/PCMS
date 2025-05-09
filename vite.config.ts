@@ -1,11 +1,16 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/PCMS/', // MUST match your repo name exactly
+  base: '/PCMS/', // Must match your repository name exactly
   build: {
-    outDir: 'dist' // or 'build' if you prefer
+    outDir: 'dist',
+    emptyOutDir: true,
+    rollupOptions: {
+      input: {
+        main: './index.html' // Explicit entry point
+      }
+    }
   }
 })
