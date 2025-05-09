@@ -9,7 +9,7 @@ const App = () => {
     
     <Router  basename="/PCMS">
       <Routes>
-        <Route path="/" element={<Navigate to="/home" replace />} />
+        <Route path="/" element={<Navigate to="/Home" replace />} />
         <Route path="/Home" element={<Home />} />
         <Route path="/Catalog" element={<Catalog />} />
         <Route path="/About" element={<About />} />
