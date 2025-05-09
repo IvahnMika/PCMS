@@ -1,0 +1,80 @@
+:root{
+    /* primary color */
+          --primary-color: #3a393b;
+          --primary-color-d1: #19191a;
+          --primary-color-d2: #0f0f10;
+          --primary-color-l1: #565657;
+          --primary-color-l2: #6e6e6f;  
+          --primary-color-l3: #7e7e7f;
+          --primary-color-l4: #8e8e8f;
+          --primary-color-l5: #9e9e9f;
+          
+          --text-color: #d9d9d9;
+    }
+
+
+    .main_div{
+        display: flex;
+        position: relative;
+
+        width: 100%;
+        height: calc(100vh - 60px);
+        height: calc(100dvh - 60px);
+        justify-content: center;
+        align-items: center;
+        background-color: var(--primary-color-l3);
+}
+.main_div_card{
+    scroll-snap-align: center;
+    box-sizing: border-box;
+    width: 100%;  
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0;
+    flex-shrink: 0;
+    background-color: var(--primary-color-l5)
+}
+
+.navs{
+    width: 100%; 
+    height:100%
+}
+.main_div_wrapper{
+    display: flex;
+    width: 100%;
+    position: relative;
+    height: auto;
+    aspect-ratio: 16/9;
+            
+    background-color: var(--primary-color-l4);
+    overflow-x: auto;
+    
+    scroll-snap-type: x mandatory;
+}
+
+.card_btns{
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+.card1{
+    background-image: url('/src/resources/imgs/car.png');
+    background-size: cover; /* or contain */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card2{
+    background-image: url('/src/resources/imgs/inventory.png');
+    background-size: cover; /* or contain */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.card3{
+    background-image: url('/src/resources/imgs/recommendation.png');
+    background-size: cover; /* or contain */
+    background-position: center;
+    background-repeat: no-repeat;
+}
