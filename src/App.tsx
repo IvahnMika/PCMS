@@ -7,7 +7,7 @@ import About from './pages/About';
 const App = () => {
   return (
     
-    <Router  basename="/PCMS">
+    <Router>
       <Routes>
         <Route path="/" element={<Navigate to="/Home" replace />} />
         <Route path="/Home" element={<Home />} />

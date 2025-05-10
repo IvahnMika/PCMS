@@ -2,6 +2,7 @@ import {NavButton, HandleClick} from '../functions/button';
 import '../index.css';
 import './css/header.css';
 import { useNavigate } from 'react-router-dom';
+import cartalogLogo from '../resources/imgs/carlogo32.png';
 
 function Header() {
     {
@@ -39,9 +40,9 @@ function Header() {
   
               <div className="header_small">
                   <div className = "hdr.home">
-                  <span>
-                  PCMS
-                  </span>
+                    <span>
+                    PCMS
+                    </span>
                   </div>
   
                   <button className = "sidebar_btn"  onClick={toggleDiv}></button>
