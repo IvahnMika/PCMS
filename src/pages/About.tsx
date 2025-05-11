@@ -11,6 +11,7 @@ import lobrioImg from '../resources/imgs/lobrio.jpg';
 import lopezImg from '../resources/imgs/lopez.jpg';
 import groupicImg from '../resources/imgs/groupic.jpg';
 import cartalogBanner from '../resources/imgs/Cartalog Banner.png';
+import sirImg from '../resources/imgs/sir.jpg';
 
 function About() {
     const navigate = useNavigate();
@@ -122,7 +123,7 @@ function About() {
                             {/* Left side - Carousel */}
                             <div className="w-full md:w-1/2 relative">
                                 <div 
-                                    className={`bg-white rounded-lg shadow-lg p-8 text-center transition-all duration-500 hover:scale-105 hover:shadow-2xl cursor-pointer ${
+                                    className={`bg-white rounded-lg shadow-lg p-8 text-center transition-all duration-500 hover:scale-105 hover:shadow-2xl cursor-pointer min-h-[600px] flex flex-col justify-center ${
                                         slideDirection === 'left' ? 'animate-slide-left' : 
                                         slideDirection === 'right' ? 'animate-slide-right' : ''
                                     }`}
@@ -170,6 +171,13 @@ function About() {
                                         (Advance Database Design and Programming Languages)
                                     </p>
                                     <p className="text-gray-700 text-lg mb-3">Submitted To:</p>
+                                    <div className="w-48 h-48 mx-auto mb-4 overflow-hidden border-4 border-blue-500">
+                                        <img 
+                                            src={sirImg} 
+                                            alt="Dr. Manuel Luis C. Delos Santos" 
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
                                     <p className="text-gray-700 text-xl font-semibold mb-2">Dr. Manuel Luis C. Delos Santos</p>
                                     <p className="text-gray-700 text-lg">Professor</p>
                                 </div>
