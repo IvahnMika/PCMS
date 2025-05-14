@@ -90,43 +90,102 @@ function Catalog() {
     }, [showFilter]);
 
     // Modal component
-    const Modal: React.FC<{ item: CatalogItem; onClose: () => void }> = ({ item, onClose }) => (
-      <div style={{
-        position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
-        background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000
-      }} onClick={onClose}>
-        <div style={{ background: '#fff', borderRadius: 16, padding: 32, minWidth: 320, minHeight: 320, position: 'relative', boxShadow: '0 4px 32px rgba(0,0,0,0.2)' }} onClick={e => e.stopPropagation()}>
-          <button onClick={onClose} style={{ position: 'absolute', top: 8, right: 16, fontSize: 24, background: 'none', border: 'none', cursor: 'pointer' }}>&times;</button>
+    const Modal: React.FC<{ item: CatalogItem; onClose: () => void }> = ({ item, onClose }) => {
+      const navigate = useNavigate();
+
+      // For demo, hardcode price for each car
+      const getPrice = (title: string) => {
+        switch (title) {
+          case 'Lingcopines': return '₱2,400,000';
+          case 'Car': return '₱1,200,000';
+          case 'Inventory': return '₱1,500,000';
+          case 'Recommendation': return '₱1,800,000';
+          case 'Lina': return '₱1,350,000';
+          case 'Listangco': return '₱1,100,000';
+          case 'Lobrio': return '₱1,250,000';
+          case 'Lopez': return '₱1,600,000';
+          default: return '₱1,000,000';
+        }
+      };
+
+      React.useEffect(() => {
+        // Disable body scroll when modal is open
+        document.body.style.overflow = 'hidden';
+        return () => {
+          document.body.style.overflow = '';
+        };
+      }, []);
+
+      return (
+        <div
+          style={{
+            position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh',
+            background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000
+          }}
+          onClick={onClose}
+        >
           <div
-            style={{
-              width: 320,
-              height: 220,
-              background: '#fff',
-              borderRadius: 20,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '0 auto 16px auto',
-              boxShadow: '0 2px 12px rgba(184, 184, 184, 0.08)',
-              overflow: 'hidden',
-            }}
+            style={{ background: '#fff', borderRadius: 16, padding: 32, minWidth: 320, minHeight: 320, position: 'relative', boxShadow: '0 4px 32px rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}
+            onClick={e => e.stopPropagation()}
           >
-            <img
-              src={item.image}
-              alt={item.title}
+            <button
+              onClick={onClose}
+              style={{ position: 'absolute', top: 8, right: 16, fontSize: 24, background: 'none', border: 'none', cursor: 'pointer' }}
+            >
+              &times;
+            </button>
+            <div
               style={{
-                maxWidth: '100%',
-                maxHeight: '100%',
-                objectFit: 'cover',
+                width: 220,
+                height: 140,
+                background: '#fff',
                 borderRadius: 20,
-                boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto 16px auto',
+                boxShadow: '0 2px 12px rgba(184, 184, 184, 0.08)',
+                overflow: 'hidden',
               }}
-            />
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  objectFit: 'cover',
+                  borderRadius: 20,
+                  boxShadow: '0 2px 8px rgba(0,0,0,0.10)',
+                }}
+              />
+            </div>
+            <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.3rem', color: '#333', marginBottom: 8 }}>{item.title}</div>
+            <div style={{ textAlign: 'center', color: '#444', fontSize: '1.1rem', marginBottom: 18 }}>
+              <span>Price: <strong>{getPrice(item.title)}</strong></span>
+            </div>
+            <button
+              style={{
+                background: 'var(--primary-blue)',
+                color: '#fff',
+                fontWeight: 700,
+                fontSize: '1.1rem',
+                border: 'none',
+                borderRadius: 8,
+                padding: '0.7rem 2.2rem',
+                cursor: 'pointer',
+                boxShadow: '0 2px 8px rgba(141,201,225,0.08)',
+                letterSpacing: '0.03em',
+                transition: 'background 0.2s, transform 0.2s',
+              }}
+              onClick={() => navigate('/CarInfo')}
+            >
+              More Info
+            </button>
           </div>
-          <div style={{ textAlign: 'center', fontWeight: 'bold', fontSize: '1.5rem', color: '#333' }}>{item.title}</div>
         </div>
-      </div>
-    );
+      );
+    };
 
     return (
         <Layout>

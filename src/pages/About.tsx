@@ -3,7 +3,7 @@ import './css/About.css';
 import { AutoScroll, HtmlLoader } from '../index1.js';
 import { useNavigate } from 'react-router-dom';
 import Layout from '../layouts/Layout'
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import lingcopinesImg from '../resources/imgs/lingcopines.jpg';
 import linaImg from '../resources/imgs/lina.jpg';
 import listangcoImg from '../resources/imgs/listangco.jpg';
@@ -19,6 +19,7 @@ function About() {
     const [touchStart, setTouchStart] = useState<number | null>(null);
     const [touchEnd, setTouchEnd] = useState<number | null>(null);
     const [slideDirection, setSlideDirection] = useState<'left' | 'right' | ''>('');
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
 
     const developers = [
         {
@@ -58,18 +59,29 @@ function About() {
         }
     ];
 
-    useEffect(() => {
-        const timer = setInterval(() => {
+    const resetTimer = () => {
+        if (timerRef.current) clearInterval(timerRef.current);
+        timerRef.current = setInterval(() => {
             setSlideDirection('left');
             setTimeout(() => {
                 setCurrentIndex((prevIndex) => (prevIndex + 1) % developers.length);
                 setSlideDirection('');
             }, 300);
         }, 3000);
-        return () => clearInterval(timer);
+    };
+
+    useEffect(() => {
+        resetTimer();
+        return () => { if (timerRef.current) clearInterval(timerRef.current); };
     }, []);
 
+    useEffect(() => {
+        resetTimer();
+        // eslint-disable-next-line
+    }, [currentIndex]);
+
     const handleSwipe = (direction: 'left' | 'right') => {
+        resetTimer();
         setSlideDirection(direction);
         setTimeout(() => {
             if (direction === 'left') {
@@ -146,13 +158,13 @@ function About() {
                                 
                                 <button 
                                     onClick={() => handleSwipe('right')}
-                                    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 text-xl"
+                                    className="absolute left-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 text-xl opacity-0.1"
                                 >
                                     ←
                                 </button>
                                 <button 
                                     onClick={() => handleSwipe('left')}
-                                    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 text-xl"
+                                    className="absolute right-0 top-1/2 -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 text-xl opacity-0.1"
                                 >
                                     →
                                 </button>
@@ -171,7 +183,7 @@ function About() {
                                         (Advance Database Design and Programming Languages)
                                     </p>
                                     <p className="text-gray-700 text-lg mb-3">Submitted To:</p>
-                                    <div className="w-48 h-48 mx-auto mb-4 overflow-hidden border-4 border-blue-500">
+                                    <div className="w-48 h-48 mx-auto mb-4 overflow-hidden border-4 border-black-500">
                                         <img 
                                             src={sirImg} 
                                             alt="Dr. Manuel Luis C. Delos Santos" 

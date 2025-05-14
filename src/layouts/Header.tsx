@@ -1,81 +1,38 @@
-import {NavButton, HandleClick} from '../functions/button';
+import { NavButton, HandleClick } from '../functions/button';
 import '../index.css';
 import './css/header.css';
 import { useNavigate } from 'react-router-dom';
 import cartalogLogo from '../resources/imgs/carlogo32.png';
 
 function Header() {
-    {
-        const navigate = useNavigate();
-        
-        
-            const { isVisible, toggleDiv } = HandleClick();
+  const navigate = useNavigate();
+  const { isVisible, toggleDiv } = HandleClick();
 
-    return (
-            
-        <header>
-
-          <div className = "header"> 
-                  <div className="header_nav">
-                        <div className = "header_btns hdr.home">
-                                <button  className = "header_btns" onClick={() => NavButton(navigate , '/Home')}>
-                                    Home
-                                </button>
-                        </div>
-    
-                        <div className = "header_btns hdr.catalog">
-                                <button  className = "header_btns" onClick={() => NavButton(navigate , '/Catalog')}>
-                                Catalog
-                                </button>
-                        </div>
-
-                        <div className = "header_btns hdr.about">
-                                <button  className = "header_btns" onClick={() => NavButton(navigate , '/About')}>
-                                About
-                                </button>
-                        </div>
-  
-                  </div>
-              </div>
-  
-              <div className="header_small">
-                  <div className = "hdr.home">
-                    <span>
-                    PCMS
-                    </span>
-                  </div>
-  
-                  <button className = "sidebar_btn"  onClick={toggleDiv}></button>
-                  {isVisible && (
-       
-                    <div className = "sidebar" >
-                        <div className = "sidebar_btns syd.home" >
-                            <button className = "sidebar_btns"  onClick={() => NavButton(navigate , '/Home')}>
-                                Home
-                            </button>
-                        </div>
-                        <div className = "sidebar_btns syd.catalog">
-                            <button className = "sidebar_btns"  onClick={() => NavButton(navigate , '/Catalog')}>
-                                Catalog
-                            </button>
-                        </div>
-                        <div className = "sidebar_btns syd.about">
-                            <button  className = "sidebar_btns" onClick={() => NavButton(navigate , '/About')}>
-                                About
-                            </button>
-                        </div>
-                    </div>
-                  )}
-             
-                  
-              </div>
-  
-              
-  
-          </header>
-    );
-  
-}
+  return (
+    <header className="header-root">
+      <div className="header-container">
+        <div className="header-brand" onClick={() => NavButton(navigate, '/Home')}>
+          <img src={cartalogLogo} alt="PCMS Logo" className="header-logo" />
+          <span className="header-title">PCMS</span>
+        </div>
+        <nav className="header-nav">
+          <button className="header-link" onClick={() => NavButton(navigate, '/Home')}>Home</button>
+          <button className="header-link" onClick={() => NavButton(navigate, '/Catalog')}>Catalog</button>
+          <button className="header-link" onClick={() => NavButton(navigate, '/About')}>About</button>
+        </nav>
+        <button className="header-sidebar-toggle" onClick={toggleDiv} aria-label="Open sidebar">
+          <span className="header-sidebar-icon" />
+        </button>
+      </div>
+      {isVisible && (
+        <div className="header-sidebar">
+          <button className="sidebar-link" onClick={() => NavButton(navigate, '/Home')}>Home</button>
+          <button className="sidebar-link" onClick={() => NavButton(navigate, '/Catalog')}>Catalog</button>
+          <button className="sidebar-link" onClick={() => NavButton(navigate, '/About')}>About</button>
+        </div>
+      )}
+    </header>
+  );
 }
 
 export default Header;
