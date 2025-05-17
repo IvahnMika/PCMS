@@ -1,3 +1,111 @@
+/* Minimalist Footer Styles */
+.footer-root {
+  width: 100%;
+  background: #fff;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.03);
+  margin-top: 3rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 2rem 2rem 1rem 2rem;
+  gap: 2rem;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.footer-title {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #222;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  transition: color 0.2s;
+}
+.footer-title:hover, .footer-title:focus {
+  color: #0077ff;
+}
+
+.footer-section {
+  min-width: 180px;
+  margin-bottom: 1rem;
+}
+.footer-section-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #444;
+  margin-bottom: 0.5rem;
+  display: block;
+  letter-spacing: 0.04em;
+}
+.footer-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-link {
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.25rem 0;
+  margin: 0;
+  transition: color 0.2s, text-decoration 0.2s;
+  text-align: left;
+}
+.footer-link:hover, .footer-link:focus {
+  color: #0077ff;
+  text-decoration: underline;
+}
+.footer-list-label {
+  color: #888;
+  font-size: 0.98rem;
+  padding-left: 0.1rem;
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  padding: 1rem 0 0.5rem 0;
+  color: #aaa;
+  font-size: 0.95rem;
+  border-top: 1px solid #f3f4f6;
+  background: #fafbfc;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 800px) {
+  .footer-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.5rem 1rem 0.5rem 1rem;
+    gap: 1.5rem;
+  }
+  .footer-section {
+    min-width: 0;
+    width: 100%;
+  }
+}
+
 /* start of footer properties */
 .footer{
     display: grid;

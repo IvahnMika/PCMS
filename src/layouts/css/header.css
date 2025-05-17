@@ -1,87 +1,234 @@
-  /* start of header properties */
-  .header{
-    z-index: 2;
+/* Minimalist Header Styles */
+.header-root {
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
 
-    position: sticky;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    background-color: var(--primary-color);
-    justify-content: center;
-    align-items: center;
-    color: var(--text-color);
-    border-bottom: 1px solid var(--primary-color-l2);
-    box-shadow: 0px 0px 10px 0px var(--primary-color-d2);
-    
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  height: 64px;
+}
 
-    display: grid;
-    grid-template-columns: minmax(0,1fr) minmax(768px,2fr) minmax(0,1fr);
-    grid-template-rows: 60px;
-    grid-template-areas: "space1 navbtns space2";
+.header-brand {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.75rem;
+}
+
+.header-logo {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.header-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #222;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+
+.header-nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.header-link {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  outline: none;
+}
+.header-link:hover, .header-link:focus {
+  background: #f3f4f6;
+  color: #0077ff;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.header-sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+.header-sidebar-icon {
+  display: block;
+  width: 28px;
+  height: 3px;
+  background: #222;
+  border-radius: 2px;
+  position: relative;
+}
+.header-sidebar-icon::before, .header-sidebar-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 28px;
+  height: 3px;
+  background: #222;
+  border-radius: 2px;
+  transition: 0.2s;
+}
+.header-sidebar-icon::before {
+  top: -8px;
+}
+.header-sidebar-icon::after {
+  top: 8px;
+}
+
+/* Sidebar styles for mobile */
+.header-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 220px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: -2px 0 16px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+  z-index: 100;
+  animation: slideInSidebar 0.2s;
+}
+@keyframes slideInSidebar {
+  from { right: -240px; opacity: 0; }
+  to { right: 0; opacity: 1; }
+}
+.sidebar-link {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  text-align: left;
+}
+.sidebar-link:hover, .sidebar-link:focus {
+  background: #f3f4f6;
+  color: #0077ff;
+}
+
+/* Responsive */
+@media (max-width: 800px) {
+  .header-container {
+    padding: 0.5rem 1rem;
+  }
+  .header-nav {
+    display: none;
+  }
+  .header-sidebar-toggle {
+    display: block;
+  }
+}
+
+/* start of header properties */
+.header{
+  z-index: 2;
+
+  position: sticky;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: var(--primary-color);
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  border-bottom: 1px solid var(--primary-color-l2);
+  box-shadow: 0px 0px 10px 0px var(--primary-color-d2);
+  
+
+  display: grid;
+  grid-template-columns: minmax(0,1fr) minmax(768px,2fr) minmax(0,1fr);
+  grid-template-rows: 60px;
+  grid-template-areas: "space1 navbtns space2";
 }
 
 .header_nav{
-    grid-area: navbtns;
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-color);
-    justify-content: center;
-    align-items: center;
-    border-bottom: 1px solid var(--primary-color-l2);
-    position: relative;
+  grid-area: navbtns;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color);
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid var(--primary-color-l2);
+  position: relative;
 
-    color: var(--text-color);
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 60px;
-    grid-template-areas: "home catalog about";
- }
+  color: var(--text-color);
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 60px;
+  grid-template-areas: "home catalog about";
+}
 
- .header_btns{
-    display: flex;
-     width: 100%;
-     height: calc(100% - 2px);
-     background-color: var(--primary-color);
-     justify-content: center;
-     align-items: center;
-     position: relative;
-     
-     font-size: 2rem;
+.header_btns{
+  display: flex;
+   width: 100%;
+   height: calc(100% - 2px);
+   background-color: var(--primary-color);
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   
+   font-size: 2rem;
 
-     color: var(--text-color);
+   color: var(--text-color);
 
- }
+}
 
- .header_btns:hover{   
-    width: 100%;
-    height: 100%;
-    background-color: var(--primary-color-l1);
-    position: relative; 
-    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3) inset, -5px -5px 5px rgb(125,125,125, 0.2 ) inset;
-    text-decoration: underline;
-    border-left:  1px solid var(--primary-color-l1);
-    border-right:  1px solid var(--primary-color-l1);
-    border-bottom: 1px solid var(--primary-color-l2);
-    }
+.header_btns:hover{   
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-color-l1);
+  position: relative; 
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3) inset, -5px -5px 5px rgb(125,125,125, 0.2 ) inset;
+  text-decoration: underline;
+  border-left:  1px solid var(--primary-color-l1);
+  border-right:  1px solid var(--primary-color-l1);
+  border-bottom: 1px solid var(--primary-color-l2);
+}
 
- .hdr_home{
-     grid-area: home;
- }
+.hdr_home{
+  grid-area: home;
+}
 
- .hdr_catalog{
-    grid-area: catalog;
+.hdr_catalog{
+  grid-area: catalog;
 }
 
 .hdr_inventory{
-    grid-area: inventory;
+  grid-area: inventory;
 }
 
 .hdr_recommendations{
-    grid-area: recommendations;
+  grid-area: recommendations;
 }
 
 .hdr_about{
-    grid-area: about;
+  grid-area: about;
 }
 
 .header_small{

@@ -1,95 +1,45 @@
-
 import '../index.css';
 import './css/footer.css';
-import {NavButton} from '../functions/button';
+import { NavButton } from '../functions/button';
 import { useNavigate } from 'react-router-dom';
 
 function Footer() {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    
-
-    return (
-
-            <footer>
-              <div className = "footer">
-                <div className = "footer_title">
-                  
-                  <button  className = "footer_btns fit-text" onClick={() => NavButton(navigate, '/Home')}>
-                    PCMS
-                  </button>
-                  
-                  
-                </div>
-
-                <div className = "footer_catalog">
-                  <div className = "footer_catalog_title">
-                        <button  className = "footer_btns font-bold paragraph" onClick={() => NavButton(navigate, '/Catalog')}>
-                            Catalog
-                        </button>
-                  </div>
-                  <div className = "footer_catalog_categories">
-                    <table className = "footer_tables">
-                          <tr>
-                            <p  className = "paragraph1">
-                              • Sedans
-                            </p>
-                          </tr>
-                          <tr>
-                            <p  className = "paragraph1">
-                              • Hatchbacks
-                            </p>
-                          </tr>
-                          <tr>
-                            <p  className = "paragraph1">
-                              •  SUVs
-                            </p>
-                          </tr>
-                          <tr>
-                            <p  className = "paragraph1">
-                              •  Coupes
-                            </p>
-                          </tr> 
-                        </table>
-                  </div>
-                </div>
-
-                  <div className = "footer_about">
-                    <div className = "footer_about_title">
-                      <button  className = "footer_btns font-bold paragraph" onClick={() => NavButton(navigate, '/About')}>
-                        About
-                      </button>
-                    </div>
-                    <div className = "footer_about_links">
-                      <table>
-                        <tr>
-                          <p className = 'paragraph1'>
-                            • Our Email
-                          </p>
-                        </tr>
-                        <tr>
-                          <p className = 'paragraph1'>
-                            • 0951-524-2046
-                          </p>
-                        </tr>
-                        <tr>
-                          <p className = 'paragraph1'>
-                            •  Check Our Twitter
-                          </p>
-                        </tr>
-                        <tr>
-                          <p className = 'paragraph1'>
-                            • Check Our Facebook
-                          </p>
-                        </tr>
-                      </table>
-                    </div>
-                  </div>
-
-              </div>
-            </footer>
-
-    );
+  return (
+    <footer className="footer-root">
+      <div className="footer-container">
+        <div className="footer-brand">
+          <button className="footer-title" onClick={() => NavButton(navigate, '/Home')}>
+            PCMS
+          </button>
+        </div>
+        <div className="footer-section">
+          <span className="footer-section-title">Catalog</span>
+          <ul className="footer-list">
+            <li><button className="footer-link" onClick={() => NavButton(navigate, '/Catalog')}>All Cars</button></li>
+            <li><span className="footer-list-label">Sedans</span></li>
+            <li><span className="footer-list-label">Hatchbacks</span></li>
+            <li><span className="footer-list-label">SUVs</span></li>
+            <li><span className="footer-list-label">Coupes</span></li>
+          </ul>
+        </div>
+        <div className="footer-section">
+          <span className="footer-section-title">About</span>
+          <ul className="footer-list">
+            <li><button className="footer-link" onClick={() => NavButton(navigate, '/About')}>About Us</button></li>
+            <li><span className="footer-list-label">Our Email</span></li>
+            <li><span className="footer-list-label">0951-524-2046</span></li>
+            <li><span className="footer-list-label">Check Our Twitter</span></li>
+            <li><span className="footer-list-label">Check Our Facebook</span></li>
+          </ul>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <span className="footer-copyright">&copy; {new Date().getFullYear()} PCMS. All rights reserved.</span>
+      </div>
+    </footer>
+  );
 }
 
 export default Footer;
